@@ -1,0 +1,16 @@
+.form-edit{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 49%;
+    border: 3px solid gold;
+    height: 53%;
+}
+.input-edit{
+    margin-top: 10px;
+}
+
+.input-edit-pass{
+    margin-top: 7px;
+}

@@ -1,0 +1,13 @@
+.edit-list{
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 40px;
+    border: 1px solid orange;
+    padding: 30px;
+}
+.button-edit{
+    display: flex;
+    width: 10%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
