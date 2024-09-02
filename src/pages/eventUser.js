@@ -16,12 +16,13 @@ import {
   IonContent,
   IonCardSubtitle,
   IonAlert,
+  IonImg,
 } from "@ionic/react";
 import { IonPage } from "@ionic/react";
 import "../css/event.css";
 
 import axios from "../config/axios";
-import {  EVENTS_URL } from "../config/urls";
+import { EVENTS_URL, GET_MYBOOKING_URL } from "../config/urls";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useHistory } from "react-router";
@@ -35,15 +36,38 @@ const Events = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const [post, setPosts] = useState([]);
- 
 
   const [postId, setPostId] = useState();
+  const [name, setName] = useState();
+  const [imgUser, setImgUser] = useState();
 
   const { jwt } = useContext(AuthContext);
 
+
   useEffect(() => {
     getEvent();
+    getBooking()
   }, []);
+
+  const getBooking = async () => {
+    setShowLoading(true);
+
+    try {
+      await axios
+        .get(GET_MYBOOKING_URL, {
+          headers: {
+            Authorization: jwt,
+          },
+        })
+        .then((res) => {
+         setName(res.data.getBookings[0].name);
+         setImgUser(res.data.getBookings[0].img_uri);
+        });
+    } catch (e) {
+      console.error("Error creating event:", e.response ? e.response.data : e);
+      setShowLoading(false);
+    }
+  };
 
   const onSubmitAdd = async () => {
     try {
@@ -64,8 +88,6 @@ const Events = () => {
       console.log(e);
     }
   };
-
-  
 
   const getEvent = async () => {
     setShowLoading(true);
@@ -121,9 +143,12 @@ const Events = () => {
                   fill="clear"
                   slot="end"
                   color="tertiary"
-                  routerLink="/login"
+                  routerLink="/profile"
                 >
-                  مرحبا
+                  مرحبا {name} 
+                  
+                  <img src={imgUser} className=" img-edit" />
+                  
                 </IonButton>
 
                 <IonButtons slot="start">
@@ -152,7 +177,7 @@ const Events = () => {
                 </IonRow>
               </IonGrid>
 
-              <IonGrid>
+              <IonGrid className="center">
                 <IonRow className="col-edit">
                   <IonCol>
                     {post.length > 0 ? (
@@ -167,7 +192,9 @@ const Events = () => {
                                 {post.description}
                               </IonCardTitle>
                               <IonCardSubtitle>{post.price}$</IonCardSubtitle>
-                              <IonCardSubtitle>{moment(post.date).format('MMMM Do YYYY')}</IonCardSubtitle>
+                              <IonCardSubtitle>
+                                {moment(post.date).format("MMMM Do YYYY")}
+                              </IonCardSubtitle>
                             </IonCardHeader>
 
                             <IonButton

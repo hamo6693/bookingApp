@@ -14,8 +14,9 @@ import {
   import { Storage } from "@capacitor/storage";
   import { useHistory } from "react-router";
   import { AuthContext } from "../context/AuthContext";
+import { bookmarks, logOutOutline, personCircleOutline } from "ionicons/icons";
 
-  import { bookmarks, logOutOutline, personCircleOutline } from "ionicons/icons";
+
 const Menu = () => {
     const {jwt,setLoggedIn} = useContext(AuthContext);
     const history = useHistory()

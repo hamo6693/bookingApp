@@ -16,7 +16,6 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonImg,
 } from "@ionic/react";
 
 import { Formik } from "formik";
@@ -83,17 +82,13 @@ const Register = () => {
           }}
         >
           {(formikProps) => (
-            <form onSubmit={formikProps.handleSubmit}>
+            <form onSubmit={formikProps.handleSubmit} className="edit-form">
               <IonGrid>
                 <IonRow>
                   <IonCol sizeMd="6" offsetMd="3" sizeLg="4" offsetLg="4">
-                    <img
-                      className="--border-radius"
-                      alt="Silhouette of a person's head"
-                      src="https://ionicframework.com/docs/img/demos/avatar.svg"
-                    />
+                   
 
-                    <IonImg />
+                  
 
                     <IonItem>
                       <IonLabel color="warning" position="floating">

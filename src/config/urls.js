@@ -11,3 +11,5 @@ export const CREATE_EVENT_URL = "event/create"
 export const GET_MYBOOKING_URL = "mybooking"
 
 export const GET_MYPROFILE_URL = "profile"
+
+export const UPLOAD_USER_PHOTO = "profile/upload-photo"

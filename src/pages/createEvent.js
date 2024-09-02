@@ -12,6 +12,9 @@ import {
   IonButton,
   IonAlert,
   IonToast,
+  IonBreadcrumb,
+  IonBreadcrumbs,
+  IonIcon
 } from "@ionic/react";
 
 import "../css/createEvent.css";
@@ -19,6 +22,8 @@ import axios from "../config/axios";
 import { AuthContext } from "../context/AuthContext";
 import { CREATE_EVENT_URL } from "../config/urls";
 import { useHistory } from "react-router";
+import { arrowForwardCircle } from "ionicons/icons";
+
 
 const CreateEvent = () => {
   const [title, setTitle] = useState("");
@@ -65,6 +70,13 @@ const CreateEvent = () => {
 
   return (
     <IonPage>
+      <IonBreadcrumbs>
+        <IonBreadcrumb href="/events">
+          Home
+          <IonIcon slot="separator" icon={arrowForwardCircle}></IonIcon>
+        </IonBreadcrumb>
+        <IonBreadcrumb href="/profile">انشاء مناسبة</IonBreadcrumb>
+      </IonBreadcrumbs>
       <IonAlert
         isOpen={showAlert}
         onDidDismiss={() => setShowAlert(false)}

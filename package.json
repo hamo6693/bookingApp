@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/camera": "^4.1.4",
     "@capacitor/cli": "^6.1.0",
     "@capacitor/core": "^6.1.0",
     "@capacitor/storage": "^1.2.5",

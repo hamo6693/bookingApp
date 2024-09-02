@@ -34,4 +34,10 @@
     width: 180px;
     margin: 0 auto;
  
-  }
+}
+.img-edit{
+  border-radius: 50% !important;
+  border-radius: 20px;
+  width: 30px;
+  margin-right: 8px;
+}

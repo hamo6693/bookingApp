@@ -132,17 +132,18 @@ const Booking = () => {
                     
                     <IonCard key={Events.id}>
                       <IonGrid>
-                        <IonRow>
+                        <IonRow > 
                           <IonCol>
-
-                          <IonCardHeader>
+                            <div style={{float:"right"}}>
+                            <IonCardHeader>
                         <IonCardTitle>{Events.title}</IonCardTitle>
                         <IonCardSubtitle>{Events.description}</IonCardSubtitle>
                       </IonCardHeader>
                       <IonCardContent>{Events.price}$</IonCardContent>
                       <IonCardSubtitle>{moment(Events.date).format('MMMM Do YYYY')}</IonCardSubtitle>
-
-                      <IonButton
+                            </div>
+                     <div style={{float:"left",margin:"50px"}}>
+                     <IonButton
                               onClick={() => {
                                 setPostId(Events.id);
                                 setShowAlert(true);
@@ -150,6 +151,9 @@ const Booking = () => {
                             >
                               الغاء 
                             </IonButton>
+                     </div>
+
+                    
 
 
                           </IonCol>
@@ -164,7 +168,13 @@ const Booking = () => {
                   );
                 })
               ) : (
-                <IonCardContent>لا يوجد حجوزات</IonCardContent>
+                <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle color="secondary" >
+                    لا توجد مناسبات لعرضها
+                  </IonCardTitle>
+                </IonCardHeader>
+              </IonCard>
               )}
             </IonContent>
           </>
